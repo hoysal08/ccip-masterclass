@@ -3,7 +3,7 @@ pragma solidity 0.8.19;
 
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
 import {IRouterClient} from "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouterClient.sol";
-import {LinkTokenInterface} from "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol";
+import {LinkTokenInterface} from "@chainlink/contracts/src/v0.8/shared/interfaces/LinkTokenInterface.sol";
 
 contract CCIPSender_Unsafe {
     address link;
@@ -19,7 +19,7 @@ contract CCIPSender_Unsafe {
         Client.EVM2AnyMessage memory message = Client.EVM2AnyMessage({
             receiver: abi.encode(receiver),
             data: abi.encode(someTest),
-            tokenAmount: new Client.EVMTokenAmount[](0),
+            tokenAmounts: new Client.EVMTokenAmount[](0),
             extraArgs:"",
             feeToken:link
         });
